@@ -9,7 +9,7 @@ public class HottubAreaTest {
 
     @Before
     public void before(){
-        hottubArea = new HottubArea(10, "double", 59.99);
+        hottubArea = new HottubArea(10, "double");
 
     }
 
@@ -24,7 +24,7 @@ public class HottubAreaTest {
     }
 
     @Test
-    public void getRate() {
-        assertEquals(59.99, hottubArea.getRate(), 0.0);
+    public void isChargable() {
+        assertEquals(false, hottubArea.isChargable());
     }
 }

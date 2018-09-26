@@ -2,12 +2,12 @@ public class HottubArea {
 
     private int roomNumber;
     private String type;
-    private double rate;
+    private boolean chargeable;
 
-    public HottubArea(int roomNumber, String type, double rate){
+    public HottubArea(int roomNumber, String type){
         this.roomNumber = roomNumber;
         this.type = type;
-        this.rate = rate;
+        this.chargeable = false;
     }
 
     public int getRoomNumber() {
@@ -18,7 +18,7 @@ public class HottubArea {
         return type;
     }
 
-    public double getRate() {
-        return rate;
+    public boolean isChargable() {
+        return chargeable;
     }
 }
