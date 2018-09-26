@@ -4,41 +4,35 @@ public class Hotel {
 
     private String name;
     private ArrayList<Bedroom> bedrooms;
-    private ArrayList<ConferenceRoom> conferenceRooms;
-    private ArrayList<HottubArea> hottubAreas;
+    private ConferenceRoom conferenceRoom;
+    private HottubArea hottubArea;
 
-    public Hotel(String name) {
+    public Hotel(String name, ConferenceRoom conferenceRoom, HottubArea hottubArea) {
         this.name = name;
         this.bedrooms = new ArrayList<>();
-        this.conferenceRooms = new ArrayList<>();
-        this.hottubAreas = new ArrayList<>();
+        this.conferenceRoom = conferenceRoom;
+        this.hottubArea = hottubArea;
     }
 
     public String getName() {
         return name;
     }
 
-    public void addBedroomToHotel(){
-
-    }
-
-    public void addConferenceRoomToHotel(){
-
-    }
-
-    public void addHottubAreaToHotel(){
-
+    public void addBedroomToHotel(Bedroom bedroom){
+        this.bedrooms.add(bedroom);
     }
 
     public int getBedrooms() {
         return this.bedrooms.size();
     }
 
-    public int getConferenceRooms() {
-        return this.conferenceRooms.size();
+    public int countGuests(Bedroom bedroom1) {
+        int targetBedroom = this.bedrooms.indexOf(bedroom1);
+        return this.bedrooms.get(targetBedroom).countGuests();
     }
 
-    public int getHottubAreas() {
-        return this.hottubAreas.size();
+    public void checkIn(Bedroom bedroom, Guest guest) {
+        int targetBedroom = this.bedrooms.indexOf(bedroom);
+        this.bedrooms.get(targetBedroom).addGuest(guest);
     }
 }

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class BedroomTest {
 
     Bedroom bedroom;
+    Guest guest;
 
     @Before
     public void before(){
@@ -26,5 +27,11 @@ public class BedroomTest {
     @Test
     public void getRate() {
         assertEquals(39.99, bedroom.getRate(), 0.0);
+    }
+
+    @Test
+    public void canAddGuest(){
+        bedroom.addGuest(guest);
+        assertEquals(1, bedroom.countGuests());
     }
 }
