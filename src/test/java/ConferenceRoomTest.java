@@ -9,13 +9,13 @@ public class ConferenceRoomTest {
 
     @Before
     public void before(){
-        conferenceRoom = new ConferenceRoom("BigBusinessBoys", 59.99);
+        conferenceRoom = new ConferenceRoom("River Room", 59.99);
 
     }
 
     @Test
     public void getName() {
-        assertEquals("BigBusinessBoys", conferenceRoom.getName());
+        assertEquals("River Room", conferenceRoom.getName());
     }
 
     @Test
