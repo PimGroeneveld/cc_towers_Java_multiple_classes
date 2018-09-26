@@ -20,8 +20,8 @@ public class HotelTest {
 
     @Before
     public void before(){
-        bedroom1 = new Bedroom(15, "single", 39.99);
-        bedroom2 = new Bedroom(17, "double", 59.99);
+        bedroom1 = new Bedroom(15, "single", 39.99, 1);
+        bedroom2 = new Bedroom(17, "double", 59.99, 2);
         conferenceRoom = new ConferenceRoom("River Room", 49.99);
         hottubArea = new HottubArea(80, "Relaxation");
         guest1 = new Guest("Mr Salmon");
@@ -55,9 +55,30 @@ public class HotelTest {
 
     @Test
     public void canCheckInGuest(){
-        hotel.checkIn(bedroom1, guest3);
-        hotel.checkIn(bedroom1, guest2);
-        assertEquals(2, hotel.countGuests(bedroom1));
+        hotel.checkIn(bedroom2, guest3);
+        hotel.checkIn(bedroom2, guest2);
+        hotel.checkIn(bedroom2, guest1);
+        assertEquals(2, hotel.countGuests(bedroom2));
     }
 
+    @Test
+    public void canGetGuestList(){
+        hotel.checkIn(bedroom2, guest3);
+        hotel.checkIn(bedroom2, guest2);
+        int result = hotel.getGuestList(bedroom2).size();
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void canGetVacantRoomsAllEmpty() {
+       int result = hotel.getVacantRooms().size();
+       assertEquals(2, result);
+    }
+
+    @Test
+    public void canGetVacantRooms() {
+        hotel.checkIn(bedroom2, guest3);
+        int result = hotel.getVacantRooms().size();
+        assertEquals(1, result);
+    }
 }
